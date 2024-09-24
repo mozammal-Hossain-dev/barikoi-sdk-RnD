@@ -1,6 +1,9 @@
 import 'package:barikoi_sdk/app/app.dart';
 import 'package:barikoi_sdk/bootstrap.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-void main() {
-  bootstrap(() => const App());
+Future<void> main() async {
+  await dotenv.load();
+
+  await bootstrap(() => const App());
 }

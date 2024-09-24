@@ -1,4 +1,4 @@
-import 'package:barikoi_sdk/counter/counter.dart';
+import 'package:barikoi_sdk/baikoi_map/add_symbol.dart';
 import 'package:barikoi_sdk/l10n/l10n.dart';
 import 'package:flutter/material.dart';
 
@@ -16,7 +16,7 @@ class App extends StatelessWidget {
       ),
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
-      home: const CounterPage(),
+      home: const SymbolMap(),
     );
   }
 }
