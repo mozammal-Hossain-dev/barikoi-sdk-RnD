@@ -17,24 +17,28 @@ class _FillMapState extends State<FillMap> {
   MaplibreMapController? mController;
 
   static const styleId =
-      'osm-liberty'; //barikoi API key, get it from https://developer.barikoi.com
+      'barikoi-dark'; //barikoi API key, get it from https://developer.barikoi.com
   final mapUrl = 'https://map.barikoi.com/styles/$styleId/style'
       '.json?key=${dotenv.env['API_KEY']}';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: MaplibreMap(
+        myLocationEnabled: true,
         initialCameraPosition:
             initialPosition, // set map initial location where map will show
         // first
         onMapCreated: (MaplibreMapController mapController) {
           //called when map object is created
           mController = mapController; // use the MaplibreMapController for map
+
           // operations
         },
         styleString: mapUrl, // barikoi map style url
+
         onStyleLoadedCallback: () {
           //add polygon to map
+
           mController?.addFill(
             const FillOptions(
               geometry: [
@@ -48,7 +52,7 @@ class _FillMapState extends State<FillMap> {
               ],
               fillColor: '#FF0000',
               fillOutlineColor: '#FFFFFF',
-              fillOpacity: 1,
+              fillOpacity: 0.5,
               draggable: true,
             ),
           );
@@ -57,15 +61,32 @@ class _FillMapState extends State<FillMap> {
               geometry: [
                 //geometry of the polygon , in <List<List<LatLng>>> format
                 [
-                  LatLng(22.85574361143307, 90.38354443076582),
-                  LatLng(22.823632508626005, 90.40521296373265),
-                  LatLng(22.82639837105691, 90.42285014172887),
-                  LatLng(22.86204198543561, 90.40050971626783),
+                  LatLng(23.80, 90.38354443076582),
+                  LatLng(23.82, 90.40521296373265),
+                  LatLng(23.81, 90.42285014172887),
+                  LatLng(23.86, 90.40050971626783),
                 ]
               ],
-              fillColor: '#FF0000',
-              fillOutlineColor: '#FFFFFF',
-              fillOpacity: 1,
+              fillColor: '#FFA500',
+              fillOutlineColor: '#FFA500',
+              fillOpacity: 0.5,
+              draggable: true,
+            ),
+          );
+          mController?.addFill(
+            const FillOptions(
+              geometry: [
+                //geometry of the polygon , in <List<List<LatLng>>> format
+                [
+                  LatLng(23.80, 90.4),
+                  LatLng(23.82, 90.521296373265),
+                  LatLng(23.81, 90.3),
+                  LatLng(23.86, 90.1),
+                ]
+              ],
+              fillColor: '#008000',
+              fillOutlineColor: '#008000',
+              fillOpacity: 0.5,
               draggable: true,
             ),
           );

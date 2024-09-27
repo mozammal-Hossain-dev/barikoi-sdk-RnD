@@ -39,13 +39,12 @@ class _SymbolMapState extends State<SymbolMap> {
         // Create SymbolOption for creating a symbol in map
         const symbolOptions = SymbolOptions(
           geometry: LatLng(
-            23.835677,
-            90.380325,
+            23.7814473,
+            90.4000522,
           ), // location of the symbol, required
-          iconImage: 'google', // icon image of the symbol
+          iconImage: '', // icon image of the symbol
           //optional parameter to configure the symbol
-          iconSize:
-              100, // size of the icon in ratio of the actual size, optional
+          iconSize: 1, // size of the icon in ratio of the actual size, optional
           iconAnchor: 'bottom', // anchor direction of the icon on
           // the location specified,  optional
           textField: 'test', // Text to show on the symbol, optional
@@ -86,7 +85,7 @@ class _SymbolMapState extends State<SymbolMap> {
 
   // Adds a network image to the currently displayed style
   Future<void> addImageFromUrl(String name, Uri uri) async {
-    var response = await http.get(uri);
+    final response = await http.get(uri);
     return mController!.addImage(name, response.bodyBytes);
   }
 }
